@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {MovieService} from '../../services/movie.service';
+import {IPopular} from '../../model/IPopular';
 
 @Component({
   selector: 'app-popular',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PopularComponent implements OnInit {
 
-  constructor() { }
+  constructor(private movieService: MovieService) { }
 
-  ngOnInit(): void {
+iPopular: IPopular;
+
+  ngOnInit(): void{
+    this.loadPopularMovies()
+  }
+
+  loadPopularMovies() {
+    this.movieService.getPopularMovies()
+      .subscribe((iPopular: IPopular) => {
+        this.iPopular = {...iPopular};
+      });
   }
 
 }
