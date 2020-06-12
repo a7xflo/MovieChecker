@@ -8,6 +8,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomeComponent } from './components/home/home.component';
 import { PopularComponent } from './components/popular/popular.component';
+import { HttpClientModule } from '@angular/common/http';
+import { MovieService } from './services/movie.service';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,7 @@ import { PopularComponent } from './components/popular/popular.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     NgbModule
   ],
