@@ -1,6 +1,6 @@
 import {IGenre} from './IGenre';
 
-export interface IPopular {
+export interface IMovie {
   poster_path: string,
   adult: boolean,
   overview: string,

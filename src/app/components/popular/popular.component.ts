@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../../services/movie.service';
-import { IPopular } from '../../model/IPopular';
-import { IMovieApiRespone } from 'src/app/model/IMovieApiRespone';
+import { IMovie } from '../../model/IMovie';
+import { IMovieApiResponse } from 'src/app/model/IMovieApiResponse';
 
 @Component({
   selector: 'app-popular',
@@ -12,16 +12,19 @@ export class PopularComponent implements OnInit {
 
   constructor(private movieService: MovieService) { }
 
-  popularMovies: IPopular[];
+  popularMovies: IMovie[];
 
   ngOnInit(): void {
+    this.loadPopularMovies();
   }
 
   loadPopularMovies() {
+    console.log("loading popular Movies")
     this.movieService.getPopularMovies()
-      .subscribe((apiRespose: IMovieApiRespone) => {
-        if (apiRespose != null) {
-          this.popularMovies = apiRespose.results;
+      .subscribe((apiResponse: IMovieApiResponse) => {
+        if (apiResponse != null) {
+          console.log(apiResponse.results);
+          this.popularMovies = apiResponse.results;
         }
       });
   }

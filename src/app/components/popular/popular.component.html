@@ -1,13 +1,7 @@
-<div>
+<br />
+<div *ngFor="let movie of popularMovies">
+  <h6>{{movie.title}}</h6>
+  <img src="https://image.tmdb.org/t/p/w154{{movie.poster_path}}" alt="">
   <br />
-  <button (click)="loadPopularMovies()">load Movies</button>
   <br />
-  <br />
-  <div *ngFor="let movie of popularMovies">
-    <h5>{{movie.title}}</h5>
-    <img src="https://image.tmdb.org/t/p/w154{{movie.poster_path}}" alt="">
-    <br />
-    <br />
-    <br />
-  </div>
 </div>

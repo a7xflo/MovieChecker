@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Injectable } from '@angular/core';
+import {Router} from '@angular/router';
+
+@Injectable({
+  providedIn: 'root',
+})
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +13,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
+ @Input() public searchPhrase:string;
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  getSearchPhrase () {
+    console.log("Searchfield:");
+    console.log(this.searchPhrase);
+    return this.searchPhrase;   
   }
 
 }
