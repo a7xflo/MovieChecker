@@ -23,13 +23,14 @@ export class SearchComponent implements OnInit {
   searchvalue: string;
 
   ngOnInit(): void {
-    this.searchvalue = this.navbar.searchPhrase;//this.navbar.getSearchPhrase();
+    this.movieService.testAcess();
+    this.searchvalue = this.navbar.getSearchPhrase();
     console.log(this.searchvalue);
     this.loadSearchedMovies(this.searchvalue);
   }
 
   loadSearchedMovies(searchvalue) {
-   // searchvalue = this.navbar.getSearchPhrase();
+   searchvalue = this.navbar.getSearchPhrase();
     console.log("loading searched Movies");
     console.log("searchComponent " + searchvalue);
     this.movieService.getSearchedMovies(searchvalue)

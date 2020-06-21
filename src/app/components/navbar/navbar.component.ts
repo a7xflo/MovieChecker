@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Injectable } from '@angular/core';
-import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -25,5 +24,4 @@ export class NavbarComponent implements OnInit {
     console.log(this.searchPhrase);
     return this.searchPhrase;   
   }
-
 }
