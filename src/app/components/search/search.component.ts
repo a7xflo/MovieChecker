@@ -1,48 +1,42 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MovieService } from '../../services/movie.service';
 import { IMovie } from '../../model/IMovie';
 import { IMovieApiResponse } from 'src/app/model/IMovieApiResponse';
-import { Injectable } from '@angular/core';
-import { NavbarComponent } from '../navbar/navbar.component';
-
-@Injectable({
-  providedIn: 'root',
-})
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css']
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent {
+  private searchPhrase = "";
+  public textIfEmpty = "";
 
-  constructor(private movieService: MovieService, private navbar: NavbarComponent) {
-   }
-
-  searchedMovies: IMovie[];
-  searchvalue: string;
-
-  ngOnInit(): void {
-    this.movieService.testAcess();
-    this.searchvalue = this.navbar.getSearchPhrase();
-    console.log(this.searchvalue);
-    this.loadSearchedMovies(this.searchvalue);
+  constructor(
+    private movieService: MovieService,
+    route: ActivatedRoute) {
+    route.queryParams.subscribe(params => {
+      this.searchPhrase = params.key;
+      this.loadSearchedMovies();
+    });
   }
 
-  loadSearchedMovies(searchvalue) {
-   searchvalue = this.navbar.getSearchPhrase();
+  searchedMovies: IMovie[];
+
+  loadSearchedMovies() {
     console.log("loading searched Movies");
-    console.log("searchComponent " + searchvalue);
-    this.movieService.getSearchedMovies(searchvalue)
+    this.movieService.getSearchedMovies(this.searchPhrase)
       .subscribe((apiResponse: IMovieApiResponse) => {
         if (apiResponse != null) {
-          console.log("values of searched and found movies");
-          console.log(apiResponse.results);
           this.searchedMovies = apiResponse.results;
         }
         else {
-          console.log("no api response for searchMovies");
+          if (apiResponse.total_results = 0){
+            console.log("No Movies have been found");
+          }
         }
       });
+    
   }
 }

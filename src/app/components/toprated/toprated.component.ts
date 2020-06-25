@@ -4,27 +4,28 @@ import { IMovie } from '../../model/IMovie';
 import { IMovieApiResponse } from 'src/app/model/IMovieApiResponse';
 
 @Component({
-  selector: 'app-popular',
-  templateUrl: './popular.component.html',
-  styleUrls: ['./popular.component.css']
+  selector: 'app-toprated',
+  templateUrl: './toprated.component.html',
+  styleUrls: ['./toprated.component.css']
 })
-export class PopularComponent implements OnInit {
+export class TopratedComponent implements OnInit {
 
   constructor(private movieService: MovieService) { }
 
-  popularMovies: IMovie[];
+  topratedMovies: IMovie[];
 
   ngOnInit(): void {
-    this.loadPopularMovies();
+    this.loadTopratedMovies();
   }
 
-  loadPopularMovies() {
-    console.log("loading popular Movies")
-    this.movieService.getPopularMovies()
+  loadTopratedMovies() {
+    console.log("loading toprated Movies")
+    this.movieService.getTopratedMovies()
       .subscribe((apiResponse: IMovieApiResponse) => {
         if (apiResponse != null) {
-          this.popularMovies = apiResponse.results;
+          this.topratedMovies = apiResponse.results;
         }
       });
   }
+
 }

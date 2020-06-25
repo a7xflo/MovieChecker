@@ -3,11 +3,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { PopularComponent } from './components/popular/popular.component';
 import { SearchComponent } from './components/search/search.component';
+import { TopratedComponent } from './components/toprated/toprated.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'popular', component: PopularComponent },
-  { path: 'search', component: SearchComponent }
+  { path: 'toprated', component: TopratedComponent },
+  { path: 'search', component: SearchComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 
 @NgModule({

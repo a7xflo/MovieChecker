@@ -1,9 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Injectable } from '@angular/core';
-
-@Injectable({
-  providedIn: 'root',
-})
+import { MovieService } from 'src/app/services/movie.service';
 
 @Component({
   selector: 'app-navbar',
@@ -12,16 +8,12 @@ import { Injectable } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
- @Input() public searchPhrase:string;
+  constructor(public movieService: MovieService) { }
 
-  constructor() { }
+  @Input() 
+  public searchPhrase: string;
 
   ngOnInit(): void {
   }
 
-  getSearchPhrase () {
-    console.log("Searchfield:");
-    console.log(this.searchPhrase);
-    return this.searchPhrase;   
-  }
 }

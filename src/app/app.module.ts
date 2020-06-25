@@ -9,6 +9,7 @@ import { PopularComponent } from './components/popular/popular.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchComponent } from './components/search/search.component';
 import { FormsModule } from '@angular/forms';
+import { TopratedComponent } from './components/toprated/toprated.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { FormsModule } from '@angular/forms';
     NavbarComponent,
     HomeComponent,
     PopularComponent,
-    SearchComponent
+    SearchComponent,
+    TopratedComponent
   ],
   imports: [
     BrowserModule,
